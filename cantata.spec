@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : cantata
 Version  : 2.3.2
-Release  : 6
+Release  : 7
 URL      : https://github.com/CDrummond/cantata/releases/download/v2.3.2/cantata-2.3.2.tar.bz2
 Source0  : https://github.com/CDrummond/cantata/releases/download/v2.3.2/cantata-2.3.2.tar.bz2
 Summary  : No detailed summary available
@@ -24,7 +24,9 @@ BuildRequires : pkgconfig(libmpg123)
 BuildRequires : pkgconfig(libmtp)
 BuildRequires : pkgconfig(sqlite3)
 BuildRequires : systemd-dev
+BuildRequires : taglib-dev
 BuildRequires : zlib-dev
+Patch1: cantata-2.3.0-libsolid_static.patch
 
 %description
 Table of Contents
@@ -75,13 +77,14 @@ license components for the cantata package.
 
 %prep
 %setup -q -n cantata-2.3.2
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1534701286
+export SOURCE_DATE_EPOCH=1534701950
 mkdir clr-build
 pushd clr-build
 %cmake ..
@@ -89,7 +92,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1534701286
+export SOURCE_DATE_EPOCH=1534701950
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/cantata
 cp 3rdparty/ebur128/COPYING %{buildroot}/usr/share/doc/cantata/3rdparty_ebur128_COPYING
@@ -106,6 +109,8 @@ popd
 
 %files
 %defattr(-,root,root,-)
+/usr/lib/cantata/cantata-replaygain
+/usr/lib/cantata/cantata-tags
 
 %files bin
 %defattr(-,root,root,-)

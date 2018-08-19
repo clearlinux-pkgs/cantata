@@ -6,7 +6,14 @@ libQt5Network.so.5
 libQt5Sql.so.5
 libQt5Svg.so.5
 libQt5Widgets.so.5
+libQt5Xml.so.5
 libc.so.6
 libgcc_s.so.1
+libm.so.6
+libmpg123.so.0
+libmtp.so.9
+libpthread.so.0
 libstdc++.so.6
+libtag.so.1
+libudev.so.1
 libz.so.1

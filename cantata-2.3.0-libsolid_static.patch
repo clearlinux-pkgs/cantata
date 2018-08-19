@@ -1,0 +1,12 @@
+diff -up cantata-2.3.0/3rdparty/solid-lite/CMakeLists.txt.libsolid_static cantata-2.3.0/3rdparty/solid-lite/CMakeLists.txt
+--- cantata-2.3.0/3rdparty/solid-lite/CMakeLists.txt.libsolid_static	2018-04-27 13:01:30.005381480 -0500
++++ cantata-2.3.0/3rdparty/solid-lite/CMakeLists.txt	2018-04-27 13:02:06.722631893 -0500
+@@ -202,7 +202,7 @@ if(APPLE)
+    set(solidlite_OPTIONAL_LIBS ${IOKIT_LIBRARY})
+ endif()
+ 
+-add_library(solidlite ${solidlite_LIB_SRCS})
++add_library(solidlite STATIC ${solidlite_LIB_SRCS})
+ 
+ if ( UDEV_FOUND )
+    set(solidlite_OPTIONAL_LIBS ${solidlite_OPTIONAL_LIBS} ${UDEV_LIBS})
