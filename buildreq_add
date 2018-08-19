@@ -2,4 +2,4 @@
 # picked up automatically. One name per line, no whitespace.
 buildreq-kde
 udisks2-dev
-media-player-info
+#media-player-info

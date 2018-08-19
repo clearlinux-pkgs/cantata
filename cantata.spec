@@ -4,7 +4,7 @@
 #
 Name     : cantata
 Version  : 2.3.2
-Release  : 3
+Release  : 4
 URL      : https://github.com/CDrummond/cantata/releases/download/v2.3.2/cantata-2.3.2.tar.bz2
 Source0  : https://github.com/CDrummond/cantata/releases/download/v2.3.2/cantata-2.3.2.tar.bz2
 Summary  : No detailed summary available
@@ -18,7 +18,6 @@ BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
 BuildRequires : libjpeg-turbo-dev
-BuildRequires : media-player-info
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(libmpg123)
 BuildRequires : pkgconfig(libmtp)
@@ -83,7 +82,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1534699715
+export SOURCE_DATE_EPOCH=1534700969
 mkdir clr-build
 pushd clr-build
 %cmake ..
@@ -91,7 +90,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1534699715
+export SOURCE_DATE_EPOCH=1534700969
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/cantata
 cp 3rdparty/ebur128/COPYING %{buildroot}/usr/share/doc/cantata/3rdparty_ebur128_COPYING
