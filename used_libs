@@ -8,10 +8,5 @@ libQt5Svg.so.5
 libQt5Widgets.so.5
 libc.so.6
 libgcc_s.so.1
-libm.so.6
-libmpg123.so.0
-libmtp.so.9
-libsolidlite.so
 libstdc++.so.6
-libtag.so.1
 libz.so.1
