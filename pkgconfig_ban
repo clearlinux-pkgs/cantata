@@ -3,3 +3,4 @@
 libavcodec
 libavformat
 libavutil
+libcdio_paranoia
