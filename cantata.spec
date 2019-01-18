@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : cantata
 Version  : 2.3.3
-Release  : 8
+Release  : 9
 URL      : https://github.com/CDrummond/cantata/releases/download/v2.3.3/cantata-2.3.3.tar.bz2
 Source0  : https://github.com/CDrummond/cantata/releases/download/v2.3.3/cantata-2.3.3.tar.bz2
 Summary  : No detailed summary available
