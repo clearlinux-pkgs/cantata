@@ -4,11 +4,11 @@
 #
 %define keepstatic 1
 Name     : cantata
-Version  : 2.4.1
-Release  : 10
-URL      : https://github.com/CDrummond/cantata/releases/download/v2.4.1/cantata-2.4.1.tar.bz2
-Source0  : https://github.com/CDrummond/cantata/releases/download/v2.4.1/cantata-2.4.1.tar.bz2
-Summary  : Qt5 client for the music player daemon (MPD)
+Version  : 2.4.2
+Release  : 11
+URL      : https://github.com/CDrummond/cantata/releases/download/v2.4.2/cantata-2.4.2.tar.bz2
+Source0  : https://github.com/CDrummond/cantata/releases/download/v2.4.2/cantata-2.4.2.tar.bz2
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 GPL-3.0 LGPL-2.1 MIT
 Requires: cantata-bin = %{version}-%{release}
@@ -20,11 +20,17 @@ BuildRequires : buildreq-kde
 BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
 BuildRequires : media-player-info
 BuildRequires : pkg-config
+BuildRequires : pkgconfig(avahi-client)
+BuildRequires : pkgconfig(libcddb)
+BuildRequires : pkgconfig(libebur128)
 BuildRequires : pkgconfig(libmpg123)
 BuildRequires : pkgconfig(libmtp)
+BuildRequires : pkgconfig(libudev)
 BuildRequires : pkgconfig(sqlite3)
-BuildRequires : systemd-dev
-BuildRequires : taglib-dev
+BuildRequires : pkgconfig(taglib)
+BuildRequires : qtbase-dev
+BuildRequires : qtmultimedia-dev
+BuildRequires : qtsvg-dev
 BuildRequires : zlib-dev
 
 %description
@@ -75,43 +81,42 @@ license components for the cantata package.
 
 
 %prep
-%setup -q -n cantata-2.4.1
-cd %{_builddir}/cantata-2.4.1
+%setup -q -n cantata-2.4.2
+cd %{_builddir}/cantata-2.4.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583778969
+export SOURCE_DATE_EPOCH=1612381565
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags}  VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1583778969
+export SOURCE_DATE_EPOCH=1612381565
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/cantata
-cp %{_builddir}/cantata-2.4.1/3rdparty/ebur128/COPYING %{buildroot}/usr/share/package-licenses/cantata/2627ff03833f74ed51a7f43c55d30b249b6a0707
-cp %{_builddir}/cantata-2.4.1/3rdparty/kcategorizedview/COPYING %{buildroot}/usr/share/package-licenses/cantata/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/cantata-2.4.1/3rdparty/kcategorizedview/COPYING.LIB %{buildroot}/usr/share/package-licenses/cantata/9a1929f4700d2407c70b507b3b2aaf6226a9543c
-cp %{_builddir}/cantata-2.4.1/3rdparty/qtiocompressor/LICENSE.GPL3 %{buildroot}/usr/share/package-licenses/cantata/8624bcdae55baeef00cd11d5dfcfa60f68710a02
-cp %{_builddir}/cantata-2.4.1/3rdparty/qtsingleapplication/LICENSE.LGPL %{buildroot}/usr/share/package-licenses/cantata/caeb68c46fa36651acf592771d09de7937926bb3
-cp %{_builddir}/cantata-2.4.1/3rdparty/qxt/LICENSE %{buildroot}/usr/share/package-licenses/cantata/3f3ade74b4071609a90853616f8db5f76a3db568
-cp %{_builddir}/cantata-2.4.1/LICENSE %{buildroot}/usr/share/package-licenses/cantata/8624bcdae55baeef00cd11d5dfcfa60f68710a02
-cp %{_builddir}/cantata-2.4.1/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/cantata/57c3cb6b9aee09ae2af06b0c517e2969d2f33d47
-cp %{_builddir}/cantata-2.4.1/windows/LICENSE.txt %{buildroot}/usr/share/package-licenses/cantata/7713a1753ce88f2c7e6b054ecc8e4c786df76300
+cp %{_builddir}/cantata-2.4.2/3rdparty/ebur128/COPYING %{buildroot}/usr/share/package-licenses/cantata/2627ff03833f74ed51a7f43c55d30b249b6a0707
+cp %{_builddir}/cantata-2.4.2/3rdparty/kcategorizedview/COPYING %{buildroot}/usr/share/package-licenses/cantata/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/cantata-2.4.2/3rdparty/kcategorizedview/COPYING.LIB %{buildroot}/usr/share/package-licenses/cantata/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/cantata-2.4.2/3rdparty/qtiocompressor/LICENSE.GPL3 %{buildroot}/usr/share/package-licenses/cantata/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+cp %{_builddir}/cantata-2.4.2/3rdparty/qtsingleapplication/LICENSE.LGPL %{buildroot}/usr/share/package-licenses/cantata/caeb68c46fa36651acf592771d09de7937926bb3
+cp %{_builddir}/cantata-2.4.2/3rdparty/qxt/LICENSE %{buildroot}/usr/share/package-licenses/cantata/3f3ade74b4071609a90853616f8db5f76a3db568
+cp %{_builddir}/cantata-2.4.2/LICENSE %{buildroot}/usr/share/package-licenses/cantata/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+cp %{_builddir}/cantata-2.4.2/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/cantata/57c3cb6b9aee09ae2af06b0c517e2969d2f33d47
+cp %{_builddir}/cantata-2.4.2/windows/LICENSE.txt %{buildroot}/usr/share/package-licenses/cantata/7713a1753ce88f2c7e6b054ecc8e4c786df76300
 pushd clr-build
 %make_install
 popd
