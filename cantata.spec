@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : cantata
 Version  : 2.4.2
-Release  : 11
+Release  : 12
 URL      : https://github.com/CDrummond/cantata/releases/download/v2.4.2/cantata-2.4.2.tar.bz2
 Source0  : https://github.com/CDrummond/cantata/releases/download/v2.4.2/cantata-2.4.2.tar.bz2
 Summary  : No detailed summary available
@@ -17,7 +17,7 @@ Requires: cantata-license = %{version}-%{release}
 Requires: media-player-info
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
-BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
+BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86vm-dev
 BuildRequires : media-player-info
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(avahi-client)
